@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="id"> <!-- Tema Gelap -->
+<!-- <html lang="id" data-theme="light"> --> <!-- Tema Terang -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>📝 Form Pendaftaran Coders Club</title>
+
+  <!-- Pico CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+  >
+
+  <style>
+    /* =====================================
+       LAYOUT UTAMA
+       Desktop: 70% Form | 30% Preview
+       ===================================== */
+
+    .form-layout {
+      display: grid;
+      grid-template-columns: 7fr 3fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .preview-card {
+      position: sticky;
+      top: 2rem;
+    }
+
+    .preview-item {
+      margin-bottom: 1rem;
+    }
+
+    .preview-item small {
+      display: block;
+      opacity: 0.7;
+      margin-bottom: 0.2rem;
+    }
+
+    .preview-emoji {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    #message {
+      margin-top: 1.5rem;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .form-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .preview-card {
+        position: static;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <main class="container">
+
+    <!-- HEADER -->
+
+    <header>
+      <h1>💻 Coders Club Registration</h1>
+
+      <p>
+        Isi form pendaftaran dan lihat preview data kamu secara langsung. 🚀
+      </p>
+    </header>
+
+
+    <!-- =====================================
+         2 KOLOM
+         ===================================== -->
+
+    <div class="form-layout">
+
+
+      <!-- ===================================
+           KOLOM KIRI — FORM
+           =================================== -->
+
+      <section>
+
+        <article>
+
+          <h2>📝 Form Pendaftaran</h2>
+
+          <form id="registrationForm">
+
+
+            <!-- NAMA -->
+
+            <label for="nameInput">
+              👤 Nama Lengkap
+
+              <input
+                type="text"
+                id="nameInput"
+                placeholder="Contoh: Budi Siregar"
+              >
+
+              <small id="nameInfo">
+                ✍️ Ketik nama lengkap kamu.
+              </small>
+            </label>
+
+
+
+            <!-- KELAS -->
+
+            <label for="classSelect">
+              🏫 Kelas
+
+              <select id="classSelect">
+
+                <option value="">
+                  -- Pilih kelas --
+                </option>
+
+                <option value="X">
+                  Kelas X
+                </option>
+
+                <option value="XI">
+                  Kelas XI
+                </option>
+
+                <option value="XII">
+                  Kelas XII
+                </option>
+
+              </select>
+
+            </label>
+
+
+
+            <!-- MINAT -->
+
+            <label for="interestSelect">
+              🎯 Minat Utama
+
+              <select id="interestSelect">
+
+                <option value="">
+                  -- Pilih minat --
+                </option>
+
+                <option
+                  value="Web Programming"
+                  data-emoji="🌐"
+                >
+                  🌐 Web Programming
+                </option>
+
+                <option
+                  value="Competitive Programming"
+                  data-emoji="🧠"
+                >
+                  🧠 Competitive Programming
+                </option>
+
+                <option
+                  value="Game Development"
+                  data-emoji="🎮"
+                >
+                  🎮 Game Development
+                </option>
+
+              </select>
+
+              <small id="interestInfo">
+                Pilih bidang yang paling kamu minati.
+              </small>
+
+            </label>
+
+
+
+            <!-- ALASAN -->
+
+            <label for="reasonInput">
+              💬 Kenapa ingin ikut Coders Club?
+
+              <textarea
+                id="reasonInput"
+                rows="5"
+                maxlength="100"
+                placeholder="Contoh: Saya ingin belajar membuat website..."
+              ></textarea>
+
+              <small>
+                ✍️ Karakter:
+                <strong id="characterCount">0</strong>
+                / 100
+              </small>
+
+            </label>
+
+
+
+            <!-- AGREEMENT -->
+
+            <label for="agreement">
+
+              <input
+                type="checkbox"
+                id="agreement"
+              >
+
+              ✅ Saya siap belajar dan mengikuti kegiatan Coders Club.
+
+            </label>
+
+
+
+            <!-- BUTTON -->
+
+            <div class="grid">
+
+              <button
+                type="button"
+                id="resetButton"
+                class="secondary"
+              >
+                🧹 Reset
+              </button>
+
+              <button type="submit">
+                🚀 Kirim Pendaftaran
+              </button>
+
+            </div>
+
+
+          </form>
+          <!-- area pesan sukses (awalnya disembunyikan dengan display: none) -->
+          <div id="successMessage" style="display: none; text-align: center; margin-top: 50px;">
+            <h1 style="font-size: 3rem;">🎉</h1>
+            <h2>Formulir Berhasil Dikirim!</h2>
+            <p>Terima kasih, data Anda sudah kami terima di Coders Club.</p>
+          </div>
+
+
+        </article>
+
+      </section>
+
+
+
+      <!-- ===================================
+           KOLOM KANAN — LIVE PREVIEW
+           =================================== -->
+
+      <aside>
+
+        <article class="preview-card">
+
+          <h3>
+            👀 Live Preview
+          </h3>
+
+          <hr>
+
+
+          <div class="preview-item">
+
+            <small>
+              👤 Nama
+            </small>
+
+            <strong id="previewName">
+              Belum diisi
+            </strong>
+
+          </div>
+
+
+
+          <div class="preview-item">
+
+            <small>
+              🏫 Kelas
+            </small>
+
+            <strong id="previewClass">
+              Belum dipilih
+            </strong>
+
+          </div>
+
+
+
+          <div class="preview-item">
+
+            <small>
+              🎯 Minat
+            </small>
+
+            <strong id="previewInterest">
+              Belum dipilih
+            </strong>
+
+          </div>
+
+
+
+          <div class="preview-item">
+
+            <small>
+              💬 Alasan bergabung
+            </small>
+
+            <span id="previewReason">
+              Belum ada alasan...
+            </span>
+
+          </div>
+
+
+          <hr>
+
+
+          <div class="preview-item">
+
+            <small>
+              📌 Status
+            </small>
+
+            <strong id="previewStatus">
+              ⏳ Belum siap dikirim
+            </strong>
+
+          </div>
+
+
+          <!-- MESSAGE -->
+
+          <div id="message">
+            👋 Silakan isi form pendaftaran.
+          </div>
+
+        </article>
+
+      </aside>
+
+
+    </div>
+
+  </main>
+  <script src="register-from.js"></script>
+</body>
+</html>

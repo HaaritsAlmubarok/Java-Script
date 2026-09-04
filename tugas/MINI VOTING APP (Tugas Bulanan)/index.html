@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Mini Voting App</title>
+
+    <!-- Hubungkan CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="top-bar">
+        <h1>Mini Voting App</h1>
+
+        <div class="top-actions">
+          <button class="top-btn" type="button" onclick="resetVoting()">
+            Reset
+          </button>
+
+          <button
+            class="top-btn"
+            id="fullscreenBtn"
+            type="button"
+            onclick="toggleFullscreen()"
+          >
+            Fullscreen
+          </button>
+        </div>
+      </div>
+
+      <div class="voting-box">
+        <div class="header">
+          <div>
+            <h2>What is your favorite game? 🚀</h2>
+
+            <p>Vote game yang kamu suka.</p>
+          </div>
+
+          <div class="total-box">
+            <span>Total Votes</span>
+            <strong id="totalVotes">0</strong>
+          </div>
+        </div>
+
+        <!-- SEMUA CARD VOTE -->
+        <div class="cards">
+          <!-- MENU 1 -->
+          <div class="card">
+            <img
+              src="https://mmc.tirto.id/image/otf/398x0,q70/2018/03/23/ilustrasi-mobile-legends--istimewa_ratio-16x9.jpg"
+              alt="ML"
+            />
+
+            <div class="content">
+              <h3>Mobile Legends</h3>
+
+              <p>
+                Adalah game MOBA yang dimainkan secara online di perangkat
+                mobile.
+              </p>
+
+              <div class="vote-info">
+                <span>
+                  🗳️
+                  <span id="vote-0">0</span>
+                  vote
+                </span>
+
+                <span id="percent-0"> 0% </span>
+              </div>
+
+              <div class="progress">
+                <div class="progress-bar" id="progress-0"></div>
+              </div>
+
+              <button class="vote-btn" onclick="vote(0)">Vote 🎮</button>
+            </div>
+          </div>
+
+          <!-- MENU 2 -->
+          <div class="card">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlIx8k7dXzBTSIlLZmw1k_yoGf41Esyu65mYhvx94g-w&s=10"
+              alt="FREE FIRE"
+            />
+
+            <div class="content">
+              <h3>FREE FIRE</h3>
+
+              <p>
+                Adalah game battle royale yang populer di kalangan pemain
+                mobile.
+              </p>
+
+              <div class="vote-info">
+                <span>
+                  🗳️
+                  <span id="vote-1">0</span>
+                  vote
+                </span>
+
+                <span id="percent-1"> 0% </span>
+              </div>
+
+              <div class="progress">
+                <div class="progress-bar" id="progress-1"></div>
+              </div>
+
+              <button class="vote-btn" onclick="vote(1)">Vote 🔥</button>
+            </div>
+          </div>
+
+          <!-- MENU 3 -->
+          <div class="card">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6-t6FAP59nbMHpeKaNk9wEIa_vfrfaQ-4QJ5lCeUYmQ&s=10"
+              alt="PUBG"
+            />
+
+            <div class="content">
+              <h3>PUBG</h3>
+
+              <p>
+                Adalah game battle royale yang populer di kalangan pemain
+                mobile.
+              </p>
+
+              <div class="vote-info">
+                <span>
+                  🗳️
+                  <span id="vote-2">0</span>
+                  vote
+                </span>
+
+                <span id="percent-2"> 0% </span>
+              </div>
+
+              <div class="progress">
+                <div class="progress-bar" id="progress-2"></div>
+              </div>
+
+              <button class="vote-btn" onclick="vote(2)">Vote 🔫</button>
+            </div>
+          </div>
+
+          <!-- MENU 4 -->
+          <div class="card">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGPfrOzTvqRUExUUSfb2l2gDO6mSDPCXELUtP14H5mLw&s"
+              alt="STUMBLE GUYS"
+            />
+
+            <div class="content">
+              <h3>Stumble Guys</h3>
+
+              <p>
+                Adalah game multiplayer yang menyenangkan dan penuh tantangan.
+              </p>
+
+              <div class="vote-info">
+                <span>
+                  🗳️
+                  <span id="vote-3">0</span>
+                  vote
+                </span>
+
+                <span id="percent-3"> 0% </span>
+              </div>
+
+              <div class="progress">
+                <div class="progress-bar" id="progress-3"></div>
+              </div>
+
+              <button class="vote-btn" onclick="vote(3)">Vote 🤪</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- CURRENT LEADER -->
+        <div class="leader">
+          <div>
+            <small>🏆 CURRENT LEADER</small>
+
+            <h2 id="leaderName">Belum ada vote</h2>
+
+            <p id="leaderVotes">Belum ada yang memimpin.</p>
+          </div>
+
+          <div class="trophy">🏆</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hubungkan JavaScript -->
+    <script src="script.js"></script>
+  </body>
+</html>
