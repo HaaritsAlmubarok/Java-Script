@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>HSI Product Explorer</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="script.js" defer></script>
+  </head>
+
+  <body>
+    <main class="container">
+
+      <!-- HEADER -->
+      <header class="top-header">
+        <div>
+          <h1>HSI Product Explorer</h1>
+          <p>Phase 5 — Consume API with JavaScript</p>
+        </div>
+
+        <div class="flow">
+          <span>API</span>
+          <b>→</b>
+          <span>JavaScript</span>
+          <b>→</b>
+          <span>DOM</span>
+          <b>→</b>
+          <span>UI</span>
+        </div>
+      </header>
+
+
+      <!-- API INTRO -->
+      <section class="api-box">
+        <div>
+          <small>Demo API</small>
+
+          <h2>
+            Explore Products
+            <span>🌐</span>
+          </h2>
+
+          <p>
+            Data di bawah diambil dari
+            <code>dummyjson.com</code>
+            menggunakan
+            <code>fetch()</code>.
+          </p>
+        </div>
+
+        <button id="reload-btn" class="reload-btn">
+          🔄 Reload Data
+        </button>
+      </section>
+
+
+      <!-- FILTER -->
+      <section class="filter-section">
+
+        <div class="filter-item search-wrapper">
+          <label for="search-input">
+            🔎 Cari produk
+          </label>
+
+          <input
+            id="search-input"
+            type="search"
+            placeholder="Contoh: phone, beauty, laptop..."
+            autocomplete="off"
+          />
+        </div>
+
+
+        <div class="filter-item">
+          <label for="category-select">
+            🏷️ Kategori
+          </label>
+
+          <select id="category-select">
+            <option value="all">Semua kategori</option>
+          </select>
+        </div>
+
+
+        <div class="filter-item">
+          <label for="sort-select">
+            ↕️ Urutkan
+          </label>
+
+          <select id="sort-select">
+            <option value="default">Default</option>
+            <option value="price-asc">Harga Termurah</option>
+            <option value="price-desc">Harga Termahal</option>
+            <option value="rating-desc">Rating Tertinggi</option>
+            <option value="name-asc">Nama A-Z</option>
+          </select>
+        </div>
+
+
+        <div class="reset-wrapper">
+          <label>&nbsp;</label>
+
+          <button id="reset-btn" class="reset-btn">
+            Reset Filter
+          </button>
+        </div>
+
+      </section>
+
+
+      <!-- RESULT INFO -->
+      <section class="result-header">
+        <strong id="result-summary">
+          Mengambil data...
+        </strong>
+
+        <span class="api-status">
+          <i></i>
+          Public API • No login
+        </span>
+      </section>
+
+
+      <!-- LOADING -->
+      <section id="loading-state" class="state-box">
+        <div class="loader"></div>
+
+        <h3>Loading products...</h3>
+
+        <p>
+          Sedang mengambil data dari DummyJSON.
+        </p>
+      </section>
+
+
+      <!-- ERROR -->
+      <section id="error-state" class="state-box error-state" hidden>
+        <div class="state-icon">⚠️</div>
+
+        <h3>Gagal mengambil data</h3>
+
+        <p id="error-message">
+          Terjadi kesalahan saat mengambil data.
+        </p>
+
+        <button id="retry-btn" class="retry-btn">
+          🔄 Coba Lagi
+        </button>
+      </section>
+
+
+      <!-- EMPTY -->
+      <section id="empty-state" class="state-box" hidden>
+        <div class="state-icon">📭</div>
+
+        <h3>Produk tidak ditemukan</h3>
+
+        <p>
+          Tidak ada produk yang cocok dengan pencarian atau filter.
+        </p>
+      </section>
+
+
+      <!-- PRODUCT GRID -->
+      <section
+        id="product-grid"
+        class="product-grid"
+        hidden
+      ></section>
+
+
+      <!-- PRODUCT DETAIL -->
+      <dialog id="product-dialog">
+
+        <div class="dialog-header">
+          <h2>Detail Product</h2>
+
+          <button
+            id="dialog-close"
+            class="dialog-close"
+            type="button"
+          >
+            ✕
+          </button>
+        </div>
+
+        <div id="dialog-content"></div>
+
+      </dialog>
+
+    </main>
+  </body>
+</html>
